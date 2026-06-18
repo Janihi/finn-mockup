@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FINN · Welches Auto passt zu dir? — Quiz-Mockup</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.24.0/dist/tabler-icons.min.css">
+<style>
+  :root{
+    --blue:#0072EA; --badge-bg:#E6F1FD;
+    --text:#191919; --black:#000000;
+    --grey-1:#3D3D3D; --grey-2:#6B6B6B; --grey-3:#9AA0AD;
+    --card:#F5F5F5; --divider:#E9EAEC;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:#FFFFFF; color:var(--text);
+    font-family:Helvetica,Arial,sans-serif; font-weight:300; line-height:150%;
+    -webkit-font-smoothing:antialiased;
+  }
+  .page{max-width:640px; margin:0 auto; padding:30px 18px 56px;}
+  .wordmark{font-weight:700; font-size:20px; letter-spacing:.5px; color:var(--black);}
+  h1{font-size:28px; line-height:34px; font-weight:700; color:var(--text); margin:18px 0 6px;}
+  .sub{font-size:15px; font-weight:300; color:var(--grey-2); margin:0;}
+  .divider{height:1px; background:var(--divider); margin:22px 0;}
+  .quiz{background:var(--card); border-radius:6px; padding:22px 20px;}
+  .qhead{display:flex; align-items:center; gap:10px; margin-bottom:16px;}
+  .qlogo{width:30px;height:30px;border-radius:4px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:#fff;}
+  .qtitle{font-size:15px; font-weight:600; color:var(--black);}
+  .qcount{margin-left:auto; font-size:13px; font-weight:300; color:var(--grey-2);}
+  .track{height:5px; border-radius:20px; background:#E2E4E8; margin-bottom:20px; overflow:hidden;}
+  .bar{height:100%; width:0; background:var(--blue); transition:width .3s;}
+  .body{min-height:250px;}
+  .q{font-size:19px; font-weight:600; color:var(--black); margin-bottom:18px; line-height:130%;}
+  .opts{display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:10px;}
+  .opt{display:flex; align-items:center; gap:11px; text-align:left; padding:15px; border-radius:4px; border:1px solid #E2E4E8; background:#fff; cursor:pointer; font-size:15px; font-weight:300; font-family:inherit; color:var(--text); transition:border-color .15s,background .15s;}
+  .opt:hover{border-color:var(--blue); background:#FAFCFF;}
+  .opt i{font-size:21px; color:var(--blue);}
+  .res-hero{background:var(--badge-bg); border-radius:6px; padding:20px;}
+  .res-badge{display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:600; padding:4px 11px; border-radius:20px; background:var(--blue); color:#fff; margin-bottom:12px;}
+  .res-label{font-size:21px; font-weight:700; color:var(--text); margin-bottom:6px;}
+  .res-line{font-size:14px; font-weight:300; color:var(--grey-1);}
+  .res-cap{font-size:13px; font-weight:300; color:var(--grey-2); margin:16px 0 9px;}
+  .car{display:flex; align-items:center; gap:12px; border:1px solid #E2E4E8; border-radius:4px; padding:11px 12px; background:#fff; margin-bottom:9px;}
+  .car-thumb{width:46px;height:32px;border-radius:3px;background:var(--card);display:flex;align-items:center;justify-content:center;color:var(--blue);}
+  .car-name{font-size:14px; font-weight:600; color:var(--text);}
+  .car-why{font-size:12px; font-weight:300; color:var(--grey-2);}
+  .actions{display:flex; gap:10px; margin-top:18px; flex-wrap:wrap; align-items:center;}
+  .cta{display:inline-flex; align-items:center; gap:8px; font-size:15px; font-weight:600; color:#fff; background:var(--blue); padding:14px 26px; border-radius:2px; border:none; cursor:pointer; font-family:inherit;}
+  .ghost{font-size:13px; font-weight:300; padding:12px 14px; border-radius:2px; border:1px solid #E2E4E8; background:#fff; cursor:pointer; color:var(--grey-1); font-family:inherit;}
+  .foot{margin-top:24px; font-size:12px; font-weight:300; color:var(--grey-3); text-align:center;}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="wordmark">FINN</div>
+  <h1>Welches Auto passt zu dir?</h1>
+  <p class="sub">Intent-Quiz-Konzept für die B2C Shopping-Journey · statt 500 Autos in vier Fragen zum passenden Match.</p>
+
+  <div class="divider"></div>
+
+  <div class="quiz">
+    <div class="qhead">
+      <div class="qlogo"><i class="ti ti-steering-wheel" style="font-size:17px"></i></div>
+      <span class="qtitle">Dein Auto-Finder</span>
+      <span class="qcount" id="q-count"></span>
+    </div>
+    <div class="track"><div class="bar" id="q-bar"></div></div>
+    <div class="body" id="q-body"></div>
+  </div>
+
+  <div class="foot">FINN · internes Konzept-Mockup · nicht final · Daten exemplarisch</div>
+</div>
+
+<script>
+const Q=[
+  {q:"Wie soll dein Auto angetrieben sein?",a:[["ti-bolt","Vollelektrisch",{ev:6}],["ti-battery-charging","Hybrid",{ev:4}],["ti-gas-station","Verbrenner",{budget:1,premium:1,family:1}],["ti-help-circle","Noch unsicher",{ev:2,flex:1}]]},
+  {q:"Wie lange brauchst du das Auto?",a:[["ti-infinity","Maximal flexibel, monatlich",{flex:4}],["ti-calendar","Etwa 6 Monate",{flex:2}],["ti-calendar-plus","12 Monate oder länger",{premium:1,family:1,budget:1}]]},
+  {q:"Worauf kommt es dir am meisten an?",a:[["ti-tag","Möglichst günstig",{budget:5}],["ti-armchair","Viel Platz für die Familie",{family:5}],["ti-diamond","Das neueste Modell & Marke",{premium:5}],["ti-mood-smile","Wenig Aufwand, einfach los",{flex:3}]]},
+  {q:"Dein Budget pro Monat?",a:[["ti-coin","bis 300 €",{budget:3}],["ti-coins","300 – 600 €",{}],["ti-cash","über 600 €",{premium:3}]]}
+];
+const RES={
+  ev:{label:"EV-Curious Switcher",icon:"ti-bolt",line:"Du steigst aufs E-Auto um – wir nehmen dir das Restwert-Risiko ab.",cars:[["Tesla Model 3","513 km Reichweite, lädt überall"],["VW ID.3","Kompakt, ideal für den Einstieg"],["Cupra Born","Sportlich & alltagstauglich"]]},
+  flex:{label:"Flexibility-Seeker",icon:"ti-refresh",line:"Auto jetzt, minimale Bindung – jederzeit zum Laufzeitende kündbar.",cars:[["VW Polo","Sofort verfügbar, keine Schufa-Hürde"],["Fiat 500","Klein, günstig, schnell geliefert"],["Mini Cooper","Flexibel in wenigen Tagen da"]]},
+  budget:{label:"Budget Value-Seeker",icon:"ti-tag",line:"Bester All-in-Preis – Steuer, Wartung & Versicherung schon drin.",cars:[["Dacia Sandero","Der Preis-Einstieg, ab 199 €"],["VW up!","Günstig & sparsam"],["Renault Clio","Mehr Auto fürs gleiche Budget"]]},
+  premium:{label:"Premium Lifestyle Driver",icon:"ti-diamond",line:"Fahre das neueste Modell – ohne Besitz, mit Top-Ausstattung.",cars:[["BMW i4","Neuestes Modell, Premium-Trim"],["Audi Q4 e-tron","Modernster Innenraum"],["Mercedes CLA","Wechsel jederzeit das Modell"]]},
+  family:{label:"Practical Family",icon:"ti-armchair",line:"Platz, Sicherheit und genug Kilometer für die ganze Familie.",cars:[["Škoda Kodiaq","7 Sitze, riesiger Kofferraum"],["VW Tiguan","5-Sterne-Sicherheit"],["Seat Tarraco","Viel Raum, mehr Freikilometer"]]}
+};
+const body=document.getElementById("q-body"),bar=document.getElementById("q-bar"),sc=document.getElementById("q-count");
+let step=0,scores={};
+function pick(map){for(const k in map)scores[k]=(scores[k]||0)+map[k];step++;render();}
+function render(){
+  bar.style.width=(step/Q.length)*100+"%";
+  if(step<Q.length){
+    sc.textContent="Frage "+(step+1)+" von "+Q.length;
+    const item=Q[step];
+    body.innerHTML='<div class="q">'+item.q+'</div><div class="opts">'+item.a.map((o,i)=>'<button class="opt" data-i="'+i+'"><i class="ti '+o[0]+'"></i>'+o[1]+'</button>').join("")+'</div>';
+    [...body.querySelectorAll(".opt")].forEach(b=>b.onclick=()=>pick(item.a[+b.dataset.i][2]));
+  } else result();
+}
+function result(){
+  sc.textContent="Dein Match";bar.style.width="100%";
+  const key=Object.keys(scores).sort((a,b)=>scores[b]-scores[a])[0]||"flex";
+  const r=RES[key];
+  body.innerHTML='<div class="res-hero"><div class="res-badge"><i class="ti '+r.icon+'" style="font-size:13px"></i> Dein FINN-Match</div><div class="res-label">'+r.label+'</div><div class="res-line">'+r.line+'</div></div>'+
+    '<div class="res-cap">Deine Auswahl – kuratiert statt 500 Autos:</div>'+
+    r.cars.map(c=>'<div class="car"><div class="car-thumb"><i class="ti ti-car" style="font-size:18px"></i></div><div><div class="car-name">'+c[0]+'</div><div class="car-why">'+c[1]+'</div></div></div>').join("")+
+    '<div class="actions"><button class="cta">Diese Autos ansehen <i class="ti ti-arrow-right" style="font-size:16px"></i></button><button class="ghost" id="q-all">Lieber alle Autos ansehen</button><button class="ghost" id="q-restart"><i class="ti ti-refresh" style="font-size:14px;vertical-align:-2px"></i></button></div>';
+  document.getElementById("q-restart").onclick=()=>{step=0;scores={};render();};
+  document.getElementById("q-all").onclick=()=>{step=0;scores={};render();};
+}
+render();
+</script>
+</body>
+</html>
