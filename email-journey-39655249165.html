@@ -10,6 +10,7 @@
     --text: #191919;
     --muted: #6B6B6B;
     --line: #E9EAEC;
+    --axis: #C9CBCF;
     --blue: #0072EA;
     --amber: #E8A13C;
     --teal: #14B8A6;
@@ -25,6 +26,7 @@
       --text: #F2F2F2;
       --muted: #9AA0A6;
       --line: #2E3033;
+      --axis: #4A4D52;
       --card: #202124;
     }
   }
@@ -34,58 +36,20 @@
     background: var(--bg);
     color: var(--text);
     line-height: 1.5;
-    padding: 48px 24px 80px;
+    padding: 44px 32px 56px;
   }
-  .wrap { max-width: 760px; margin: 0 auto; }
   h1 { font-size: 26px; font-weight: 700; }
   .sub { color: var(--muted); font-size: 14px; margin-top: 6px; }
-  .meta {
-    display: flex; flex-wrap: wrap; gap: 10px;
-    margin: 20px 0 8px;
-  }
-  .meta span {
-    background: var(--card); border: 1px solid var(--line);
-    border-radius: 999px; padding: 4px 12px; font-size: 13px; color: var(--muted);
-  }
-  .legend { display: flex; flex-wrap: wrap; gap: 14px; margin: 18px 0 34px; font-size: 13px; color: var(--muted); }
+  .legend { display: flex; flex-wrap: wrap; gap: 14px; margin: 16px 0 8px; font-size: 13px; color: var(--muted); }
   .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; }
-
-  .phase { margin-bottom: 8px; }
-  .phase-title {
-    display: flex; align-items: center; gap: 10px;
-    font-size: 16px; font-weight: 700; margin: 26px 0 4px;
-  }
-  .phase-title i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; }
-
-  ul.tl { list-style: none; border-left: 2px solid var(--line); margin-left: 5px; padding-left: 0; }
-  ul.tl li {
-    position: relative;
-    display: flex; gap: 14px; align-items: baseline;
-    padding: 7px 0 7px 26px;
-  }
-  ul.tl li::before {
-    content: ""; position: absolute; left: -6px; top: 13px;
-    width: 10px; height: 10px; border-radius: 50%;
-    background: var(--dot, var(--gray));
-  }
-  .date { flex: 0 0 96px; font-size: 13px; color: var(--muted); white-space: nowrap; }
-  .label { font-size: 15px; }
-  .flag {
-    display: inline-block; margin-left: 8px; font-size: 12px; font-weight: 700;
-    color: var(--coral);
-  }
-  .note { font-size: 13px; color: var(--muted); padding: 2px 0 8px 122px; }
-  .footer { margin-top: 44px; font-size: 12px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 16px; }
+  .hint { font-size: 12px; color: var(--muted); margin-bottom: 10px; }
+  .tl-scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); }
+  .footer { margin-top: 20px; font-size: 12px; color: var(--muted); }
 </style>
 </head>
 <body>
-<div class="wrap">
   <h1>E-Mail-Journey · Abo 39655249165</h1>
-  <p class="sub">MG MG3 · B2C · Buchung 03.07.2025 → Übergabe 10.07.2025 → Rückgabe 10.07.2026 · 61 Timeline-Einträge</p>
-
-  <div class="meta">
-    <span>NPS 9/10</span><span>CSAT Handover 5/5</span><span>Trustpilot 5★</span><span>Keine Verlängerung</span>
-  </div>
+  <p class="sub">MG MG3 · B2C · Buchung 03.07.2025 → Übergabe 10.07.2025 → Rückgabe 10.07.2026 · Abstände entsprechen der realen Zeit zwischen den Sendouts</p>
 
   <div class="legend">
     <span><i style="background:var(--blue)"></i>Buchung &amp; Lieferung</span>
@@ -96,75 +60,138 @@
     <span><i style="background:var(--green)"></i>Rückgabe</span>
     <span><i style="background:var(--coral)"></i>Auffälligkeit</span>
   </div>
+  <p class="hint">→ horizontal scrollen</p>
 
-  <div class="phase">
-    <div class="phase-title"><i style="background:var(--blue)"></i>Buchung &amp; Vorbereitung</div>
-    <ul class="tl" style="--dot: var(--blue)">
-      <li><span class="date">03.07.25</span><span class="label">Final Confirmation · CSAT Booking</span></li>
-      <li><span class="date">04.07.25</span><span class="label">Excitement Mail</span></li>
-      <li><span class="date">05.07.25</span><span class="label">Deductible Reduction Invite</span></li>
-      <li><span class="date">07.07.25</span><span class="label">Delivery Confirmation</span></li>
-      <li><span class="date">08.07.25</span><span class="label">Holder Agreement (Haltererklärung)</span></li>
-    </ul>
-  </div>
-
-  <div class="phase">
-    <div class="phase-title"><i style="background:var(--blue)"></i>Lieferung</div>
-    <ul class="tl" style="--dot: var(--blue)">
-      <li><span class="date">10.07.25</span><span class="label">Delivery Today · CSAT Handover · Übergabeprotokoll</span></li>
-    </ul>
-  </div>
-
-  <div class="phase">
-    <div class="phase-title"><i style="background:var(--amber)"></i>In-Life 2025</div>
-    <ul class="tl" style="--dot: var(--amber)">
-      <li><span class="date">07.08.25</span><span class="label">Workshop Order</span></li>
-      <li><span class="date">10.08.25</span><span class="label">Workshop-Termincheck · Incident Follow-up</span></li>
-      <li style="--dot: var(--gray)"><span class="date">monatlich</span><span class="label">Rechnungsversand am 10. (Sep 25 – Jun 26)</span></li>
-      <li><span class="date">10./15.09.</span><span class="label">2× Workshop Follow-up</span></li>
-      <li style="--dot: var(--teal)"><span class="date">16.10.25</span><span class="label">NPS Active — 9/10</span></li>
-      <li style="--dot: var(--teal)"><span class="date">17.10.25</span><span class="label">Trustpilot-Einladung → 5★-Review (19.10.)</span></li>
-      <li><span class="date">4× im Abo</span><span class="label">Kilometerstand-Abfragen (Nov · Feb · Mär · Apr)</span></li>
-      <li><span class="date">22.12.25</span><span class="label">Violation Ticket</span></li>
-    </ul>
-  </div>
-
-  <div class="phase">
-    <div class="phase-title"><i style="background:var(--amber)"></i>In-Life 2026</div>
-    <ul class="tl" style="--dot: var(--amber)">
-      <li><span class="date">27.02.26</span><span class="label">HU/Service-Reminder</span></li>
-      <li><span class="date">03.03.26</span><span class="label">Bestätigung Inspektionsbuchung</span></li>
-      <li><span class="date">06.03.26</span><span class="label">Workshop Order</span></li>
-      <li style="--dot: var(--teal)"><span class="date">07.03.26</span><span class="label">CSAT Vehicle</span></li>
-      <li style="--dot: var(--coral)"><span class="date">19.03.26</span><span class="label">CES Incident<span class="flag">⚠ 2× in derselben Sekunde versendet</span></span></li>
-      <li><span class="date">03.04.26</span><span class="label">Violation Ticket</span></li>
-      <li style="--dot: var(--coral)"><span class="date">06.–10.04.</span><span class="label">3× Rechnung in 4 Tagen<span class="flag">⚠ inkl. one-off</span></span></li>
-      <li><span class="date">17.04.26</span><span class="label">Workshop Order</span></li>
-      <li><span class="date">20./24.04.</span><span class="label">2× OPS-Info-Mail</span></li>
-    </ul>
-  </div>
-
-  <div class="phase">
-    <div class="phase-title"><i style="background:var(--purple)"></i>Retention Journey</div>
-    <ul class="tl" style="--dot: var(--purple)">
-      <li><span class="date">24.03.–26.05.</span><span class="label">6 Mails: 110 · 90 · 80 · 70 · 60 · 45 Tage vor Vertragsende</span></li>
-    </ul>
-    <p class="note">Variante „first-time-retainers" — keine Verlängerung erfolgt.</p>
-  </div>
-
-  <div class="phase">
-    <div class="phase-title"><i style="background:var(--green)"></i>Rückgabe</div>
-    <ul class="tl" style="--dot: var(--green)">
-      <li><span class="date">02.06.26</span><span class="label">Terminbestätigung Rückgabe</span></li>
-      <li><span class="date">05.07.26</span><span class="label">Rückgabe-Checkliste</span></li>
-      <li><span class="date">10.07.26</span><span class="label">Return Today · CSAT Return · Car Returned Info</span></li>
-      <li><span class="date">13.07.26</span><span class="label">Rückgabeprotokoll</span></li>
-    </ul>
-  </div>
+  <div class="tl-scroll"><div id="tl"></div></div>
 
   <div class="footer">
-    Quelle: Sub Space Historie (spaces.finn.com) · Stand 14.07.2026 · Wiederkehrende Mails (Rechnungen, Kilometerstand-Abfragen) sind zu Sammeleinträgen zusammengefasst.
+    Quelle: Sub Space Historie (spaces.finn.com) · Stand 14.07.2026
   </div>
-</div>
+
+<script>
+(function () {
+  // [date, label, category]
+  const events = [
+    ["2025-07-03","Final Confirmation","blue"],
+    ["2025-07-03","CSAT Booking","teal"],
+    ["2025-07-04","Excitement Mail","blue"],
+    ["2025-07-05","Deductible Reduction Invite","blue"],
+    ["2025-07-07","Delivery Confirmation","blue"],
+    ["2025-07-08","Holder Agreement","blue"],
+    ["2025-07-10","Delivery Today","blue"],
+    ["2025-07-10","CSAT Handover","teal"],
+    ["2025-07-10","Übergabeprotokoll","blue"],
+    ["2025-08-07","Workshop Order","amber"],
+    ["2025-08-10","Workshop-Termincheck","amber"],
+    ["2025-08-10","Incident Follow-up","amber"],
+    ["2025-09-10","Rechnung","gray"],
+    ["2025-09-10","Workshop Follow-up","amber"],
+    ["2025-09-15","Workshop Follow-up","amber"],
+    ["2025-10-10","Rechnung","gray"],
+    ["2025-10-16","NPS Active — 9/10","teal"],
+    ["2025-10-17","Trustpilot-Einladung → 5★","teal"],
+    ["2025-11-07","Kilometerstand-Abfrage","amber"],
+    ["2025-11-10","Rechnung","gray"],
+    ["2025-12-10","Rechnung","gray"],
+    ["2025-12-22","Violation Ticket","amber"],
+    ["2026-01-10","Rechnung","gray"],
+    ["2026-02-07","Kilometerstand-Abfrage","amber"],
+    ["2026-02-10","Rechnung","gray"],
+    ["2026-02-27","HU/Service-Reminder","amber"],
+    ["2026-03-03","Inspektionsbuchung bestätigt","amber"],
+    ["2026-03-06","Workshop Order","amber"],
+    ["2026-03-07","CSAT Vehicle","teal"],
+    ["2026-03-07","Kilometerstand-Abfrage","amber"],
+    ["2026-03-09","OPS-Info-Mail","amber"],
+    ["2026-03-19","CES Incident — 2× versendet ⚠","coral"],
+    ["2026-03-24","Retention: 110 Tage","purple"],
+    ["2026-04-03","Violation Ticket","amber"],
+    ["2026-04-06","Rechnung (one-off)","gray"],
+    ["2026-04-08","Rechnung","gray"],
+    ["2026-04-10","Rechnung","gray"],
+    ["2026-04-11","Retention: 90 Tage","purple"],
+    ["2026-04-17","Workshop Order","amber"],
+    ["2026-04-20","Kilometerstand-Abfrage","amber"],
+    ["2026-04-20","OPS-Info-Mail","amber"],
+    ["2026-04-21","Retention: 80 Tage","purple"],
+    ["2026-04-24","OPS-Info-Mail","amber"],
+    ["2026-05-01","Retention: 70 Tage","purple"],
+    ["2026-05-11","Retention: 60 Tage","purple"],
+    ["2026-05-26","Retention: 45 Tage","purple"],
+    ["2026-06-02","Rückgabe-Terminbestätigung","green"],
+    ["2026-06-10","Rechnung","gray"],
+    ["2026-07-05","Rückgabe-Checkliste","green"],
+    ["2026-07-10","Return Today","green"],
+    ["2026-07-10","CSAT Return","teal"],
+    ["2026-07-10","Car Returned Info","green"],
+    ["2026-07-13","Rückgabeprotokoll","green"]
+  ];
+
+  const t0 = new Date("2025-07-01");
+  const t1 = new Date("2026-07-20");
+  const PX_PER_DAY = 7;
+  const M_LEFT = 40, M_RIGHT = 240;
+  const days = (t1 - t0) / 864e5;
+  const width = Math.round(days * PX_PER_DAY) + M_LEFT + M_RIGHT;
+  const AXIS_Y = 300;
+  const LANE_H = 24;
+  const CHAR_W = 6.4;
+
+  const x = d => M_LEFT + ((new Date(d) - t0) / 864e5) * PX_PER_DAY;
+
+  // greedy lane assignment, alternating above/below
+  const lanesUp = [], lanesDown = [];
+  const placed = events.map(([d, label, cat], i) => {
+    const px = x(d);
+    const text = fmt(d) + "  " + label;
+    const w = text.length * CHAR_W + 8;
+    const up = i % 2 === 0;
+    const lanes = up ? lanesUp : lanesDown;
+    let lane = 0;
+    while (lanes[lane] !== undefined && lanes[lane] + 14 > px) lane++;
+    lanes[lane] = px + w;
+    return { px, text, cat, up, lane };
+  });
+
+  function fmt(d) {
+    const t = new Date(d);
+    return String(t.getDate()).padStart(2, "0") + "." + String(t.getMonth() + 1).padStart(2, "0") + ".";
+  }
+
+  const maxUp = lanesUp.length, maxDown = lanesDown.length;
+  const topY = AXIS_Y - 40 - maxUp * LANE_H;
+  const height = AXIS_Y + 46 + maxDown * LANE_H + 30;
+
+  let svg = `<svg width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Zeitstrahl aller E-Mails von Juli 2025 bis Juli 2026">`;
+
+  // month gridlines + labels
+  const months = ["Jan","Feb","Mär","Apr","Mai","Jun","Jul","Aug","Sep","Okt","Nov","Dez"];
+  let m = new Date(2025, 6, 1);
+  while (m <= t1) {
+    const mx = x(m);
+    svg += `<line x1="${mx}" y1="${Math.max(20, topY)}" x2="${mx}" y2="${AXIS_Y + 30 + maxDown * LANE_H}" stroke="var(--line)" stroke-width="1"/>`;
+    svg += `<text x="${mx + 5}" y="${AXIS_Y + 30 + maxDown * LANE_H + 16}" font-size="11" fill="var(--muted)" font-family="Helvetica,Arial,sans-serif">${months[m.getMonth()]} ${String(m.getFullYear()).slice(2)}</text>`;
+    m = new Date(m.getFullYear(), m.getMonth() + 1, 1);
+  }
+
+  // axis
+  svg += `<line x1="${M_LEFT - 20}" y1="${AXIS_Y}" x2="${width - 30}" y2="${AXIS_Y}" stroke="var(--axis)" stroke-width="3"/>`;
+  svg += `<polygon points="${width - 30},${AXIS_Y - 6} ${width - 30},${AXIS_Y + 6} ${width - 16},${AXIS_Y}" fill="var(--axis)"/>`;
+
+  // events
+  placed.forEach(e => {
+    const laneY = e.up
+      ? AXIS_Y - 34 - e.lane * LANE_H
+      : AXIS_Y + 40 + e.lane * LANE_H;
+    const col = `var(--${e.cat})`;
+    svg += `<line x1="${e.px}" y1="${AXIS_Y + (e.up ? -7 : 7)}" x2="${e.px}" y2="${laneY + (e.up ? 4 : -10)}" stroke="${col}" stroke-width="1" opacity="0.45"/>`;
+    svg += `<circle cx="${e.px}" cy="${AXIS_Y}" r="5.5" fill="${col}"/>`;
+    svg += `<text x="${e.px}" y="${laneY}" font-size="11.5" fill="var(--text)" font-family="Helvetica,Arial,sans-serif"><tspan fill="var(--muted)">${e.text.slice(0, 7)}</tspan>${e.text.slice(7)}</text>`;
+  });
+
+  svg += `</svg>`;
+  document.getElementById("tl").innerHTML = svg;
+})();
+</script>
 </body>
 </html>
